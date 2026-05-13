@@ -55,8 +55,39 @@ JSON 字段说明：
 | `news[].title` | 标题，12 字以内 |
 | `news[].tts_text` | 该条的口播文本 |
 | `news[].lines` | 字幕 3 行，每行 15 字以内 |
-| `news[].clip` | 背景素材文件名 |
-| `news[].offset` | 素材剪辑起始秒数（2-10 秒） |
+| `news[].clip` | 背景素材文件名（留空则自动匹配） |
+| `news[].offset` | 素材剪辑起始秒数（留空则自动匹配） |
+
+### `scripts/footage_matcher.py`
+
+新闻文字内容 → 素材分类智能匹配器。
+
+根据标题+要点提取关键词，按 tech / ai / abstract / nature / business 五类打分，自动选最佳分类。
+
+默认回退：素材库随机选 → 全部无素材则用 qwen_01.mp4。
+
+```python
+from scripts import footage_matcher as fm
+
+cat = fm.match_category("OpenAI GPT-5.5", lines)        # → "ai"
+clip, offset = fm.pick_clip(cat, "/path/to/project")   # → ("ai/language_model.mp4", 5)
+```
+
+### `scripts/news_with_tiktok.py`
+
+素材自动采集 + 匹配 Pipeline。
+
+按新闻标题提取关键词 → 搜索 Pexels 免费竖版视频 → 下载到对应分类目录 → 自动填入 JSON。
+
+多源路由：Pexels（免费可商用）→ 已有素材库回退。
+
+```bash
+# 在写好的 JSON 基础上跑：
+python3 scripts/news_with_tiktok.py
+# 更新 JSON 中的 clip/offset 字段
+```
+
+支持 `--input` 参数指定 JSON 路径。
 
 ### `scripts/news_template.json`
 

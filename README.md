@@ -52,14 +52,33 @@ your_project/
 └── user_outro_ready.png    # 片尾图 720×1280
 ```
 
-### 创建脚本
+### 准备素材（自动采集）
+
+如果素材库不足，可以自动搜索下载匹配的免费竖版视频：
+
+```bash
+# 1. 写新闻脚本（clip/offset 可留空）
+python3 -c "..." > /tmp/daily_news_items.json
+
+# 2. 自动采集素材 + 匹配
+python3 scripts/news_with_tiktok.py
+# → 从 Pexels / Coverr 搜索并下载匹配的竖版视频
+# → 自动填入 clip/offset 字段
+# → 下载失败则从已有素材库随机选
+
+# 3. 出片
+python3 scripts/daily_news_video.py
+```
+
+### 手动指定素材
 
 参考 `news_template.json`，写入 `/tmp/daily_news_items.json`。核心字段：
 
 - `intro` / `outro` — 口播开头结尾
 - `news[].tts_text` — 每条的口播文本
 - `news[].lines` — 字幕三行
-- `news[].clip` / `news[].offset` — 背景素材
+- `news[].clip` — 背景素材文件名（留空则自动匹配）
+- `news[].offset` — 素材起始时间（留空则自动匹配）
 
 ### 跑起来
 
@@ -74,6 +93,18 @@ python3 scripts/daily_news_video.py
 python3 scripts/daily_news_video.py \
   --input /tmp/my_script.json \
   --project my_project
+```
+
+### 完整自动化 cron
+
+可用于每日定时出片（配合 GitHub Actions 或 cron job）：
+
+```bash
+# cron: 0 9 * * *
+# 1. 搜新闻 → 写入 JSON
+# 2. 自动采素材 → python3 scripts/news_with_tiktok.py
+# 3. 出片 → python3 scripts/daily_news_video.py
+# 4. 发送到微信/Telegram/消息通道
 ```
 
 ## 输出规格
