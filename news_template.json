@@ -1,0 +1,62 @@
+{
+  "date": "2026.05.12",
+  "intro": "AI资讯速递，五月第二周。",
+  "outro": "关注我，每日获取AI前沿资讯。",
+  "news": [
+    {
+      "title": "OpenAI · GPT-5.5发布",
+      "tts_text": "OpenAI发布GPT5.5，代号Spud，推理和代码能力大幅提升，正在向AI超级应用全面转型。",
+      "clip": "qwen_01.mp4",
+      "offset": 3,
+      "lines": [
+        "代号Spud，推理能力大幅提升",
+        "代码能力强化，向AI超级应用转型",
+        "ChatGPT付费用户可直接使用"
+      ]
+    },
+    {
+      "title": "Google · Gemini企业Agent平台",
+      "tts_text": "Google发布Gemini企业Agent平台和全新TPU芯片，全面押注AI Agent生态。",
+      "clip": "tech_01.mp4",
+      "offset": 10,
+      "lines": [
+        "发布全新TPU芯片和Agent平台",
+        "Vertex AI升级为统一Agent构建栈",
+        "全面押注AI Agent生态发展"
+      ]
+    },
+    {
+      "title": "Anthropic · Mythos安全事件",
+      "tts_text": "Anthropic最强安全模型Mythos遭未授权访问，暴露AI前沿模型的安全新挑战。",
+      "clip": "startup_01.mp4",
+      "offset": 5,
+      "lines": [
+        "最强安全模型Mythos遭未授权访问",
+        "无法确认是API漏洞还是内部泄露",
+        "暴露AI前沿模型的安全新挑战"
+      ]
+    },
+    {
+      "title": "DeepSeek · V4正式发布",
+      "tts_text": "DeepSeek V4发布，支持100万token上下文窗口，开源权重，性能直逼前沿模型。",
+      "clip": "startup_02.mp4",
+      "offset": 2,
+      "lines": [
+        "支持100万token上下文窗口",
+        "开源权重，性能直逼前沿模型",
+        "编程和推理能力显著提升"
+      ]
+    },
+    {
+      "title": "AI军备赛白热化",
+      "tts_text": "Google投资Anthropic400亿美元，微软与OpenAI解除独家云协议，AI军备竞赛白热化。",
+      "clip": "qwen_02.mp4",
+      "offset": 2,
+      "lines": [
+        "Google投资Anthropic超400亿美元",
+        "微软与OpenAI解除独家云协议",
+        "美国政府入场强制预发布AI安全测试"
+      ]
+    }
+  ]
+}
